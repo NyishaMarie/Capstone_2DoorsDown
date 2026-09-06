@@ -1,4 +1,3 @@
-// client/src/contexts/ApiContext.jsx
 import { createContext, useContext, useCallback, useState } from 'react';
 import { useAuth } from './AuthContext';
 
