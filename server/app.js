@@ -1,3 +1,5 @@
+//this file server/app.js is for the Express application. It builds the API, export default app. It sets up the main app, middleware, and routes.
+
 import express from 'express';
 import cors from 'cors';
 import apiRouter from './api/index.js';
