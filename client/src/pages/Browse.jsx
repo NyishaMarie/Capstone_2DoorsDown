@@ -1,6 +1,6 @@
 // client/src/pages/Browse.jsx
 import { useEffect, useState } from 'react';
-import { useApi } from '../contexts/ApiContext';
+import { useApi } from '../api/ApiContext';
 import ToolCard from '../components/ToolCard';
 import CategoryFilter from '../components/CategoryFilter';
 
