@@ -18,7 +18,7 @@ CREATE TABLE tools (
     name TEXT NOT NULL,
     description TEXT NOT NULL,
     category TEXT NOT NULL CHECK (category IN ('power', 'hand', 'garden', 'automotive', 'ladder', 'outdoor', 'other')),
-    condition TEXT NOT NULL CHECK (condition IN ('likeNew', 'good', 'fair', 'wellLoved')),
+    condition TEXT NOT NULL CHECK (condition IN ('like_new', 'good', 'fair', 'well_loved')),
     photo_url TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
  );
