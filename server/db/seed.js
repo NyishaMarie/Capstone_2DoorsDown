@@ -2,8 +2,15 @@ import 'dotenv/config';
 import { readFile } from 'node:fs/promises';
 import db from '#db/client.js';
 import {createUser} from '#db/queries/users.js';
+
+// TO DO - createTool comes with P-08 (Priscilla) 
 import {createTool} from '#db/queries/tools.js';
+
+// TO DO - createBorrow with N-11 (Nyisha)
 import {createBorrow} from '#db/queries/borrows.js';
+
+// until both of those exist, our npm run db:seed won't run properly
+
 
 const PASSWORD = 'password';
 
@@ -118,8 +125,10 @@ const borrows = buildBorrows();
     for (let i=0; i<borrows.length; i++) {
         const borrow = borrows[i];
         const ownerIndex = tools[borrow.tool].owner;
+
 // offset is always 1-9, never a multiple of 10. borrower is never the owner
-        const borrowerIndex = (ownerIndex + 1 + (i%9)) % users.length;; 
+
+        const borrowerIndex = (ownerIndex + 1 + (i%9)) % users.length; 
 
         await createBorrow({
             tool_id: createdTools[borrow.tool].id,
