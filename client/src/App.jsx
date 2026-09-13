@@ -2,7 +2,6 @@
 
 import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './auth/AuthContext.jsx';
-import { ApiProvider } from './api/ApiContext.jsx';
 import Layout from './layout/Layout.jsx';
 import Browse from './pages/Browse.jsx';
 
@@ -14,7 +13,6 @@ function Soon({ name, owner, ticket }) {
 export default function App() {
   return (
     <AuthProvider>
-      <ApiProvider>
         <Routes>
           <Route element={<Layout />}>
             <Route index element={<Soon name="Landing" owner="Priscilla" ticket="P-16" />} />
@@ -31,7 +29,6 @@ export default function App() {
             <Route path="*" element={<Soon name="Not found" owner="either" ticket="T-10" />} />
           </Route>
         </Routes>
-      </ApiProvider>
     </AuthProvider>
   );
 }
