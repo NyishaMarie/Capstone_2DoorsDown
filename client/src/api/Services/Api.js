@@ -1,4 +1,3 @@
-// 
 async function apiRequest(resource, token, options = {}) {
   const headers = { 'Content-Type': 'application/json', ...options.headers };
   if (token) headers.Authorization = `Bearer ${token}`;
@@ -9,7 +8,12 @@ async function apiRequest(resource, token, options = {}) {
   });
 
   if (!res.ok) {
-    const body = await res.json().catch(() => ({}));
+    let body;
+        try {
+         body = await res.json();
+        } catch {
+        body = {};
+        }
     throw new Error(body.error || `Request failed with ${res.status}`);
   }
 
