@@ -1,7 +1,6 @@
-// client/src/pages/Browse.jsx
 import { useEffect, useState } from 'react';
-import apiRequest from '../api/api';
-import { useAuth } from '../contexts/AuthContext'; // gives us the logged-in user's token
+import apiRequest from '../api/Services/Api';
+import { useAuth } from '../auth/AuthContext';  
 import ToolCard from '../components/ToolCard'; 
 import CategoryFilter from '../components/CategoryFilter';
 
@@ -11,7 +10,7 @@ export default function Browse() {
   const [tools, setTools] = useState([]);
   const [category, setCategory] = useState('');
   const [availableOnly, setAvailableOnly] = useState(false);
-  const [status, setStatus] = useState('loading'); // 'loading' | 'ready' | 'error'
+  const [status, setStatus] = useState('loading'); 
   const [error, setError] = useState(null);
 
   useEffect(() => {
