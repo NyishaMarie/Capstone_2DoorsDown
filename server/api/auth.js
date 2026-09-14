@@ -14,7 +14,7 @@ router.post("/register", async (req, res) => {
     if (!email?.trim() || !password || !fullName?.trim() || !neighborhood?.trim()) {
         return res
         .status(400)
-        .send("Email, password, full name, and neighborhood are all required.");
+        .json({ error: "Email, password, full name, and neighborhood are all required." });
     }
 
     if (password.length < 8) {

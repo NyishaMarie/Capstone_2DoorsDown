@@ -5,6 +5,8 @@ import { AuthProvider } from './auth/AuthContext.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import Layout from './layout/Layout.jsx';
 import Browse from './pages/Browse.jsx';
+import Login from './pages/Login.jsx';
+import Register from './pages/Register.jsx';
 
 // Stands in for pages that aren't written yet.
 function Soon({ name, owner, ticket }) {
@@ -22,8 +24,8 @@ export default function App() {
             <Route path="browse" element={<Browse />} />
             <Route path="tools/:id" element={<Soon name="Tool detail" owner="Priscilla" ticket="P-07" />} />
             <Route path="users/:id" element={<Soon name="Profile" owner="Priscilla" ticket="P-15" />} />
-            <Route path="login" element={<Soon name="Login" owner="Nyisha" ticket="N-07" />} />
-            <Route path="register" element={<Soon name="Register" owner="Nyisha" ticket="N-07" />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
 
             {/* everything in here needs a login, ProtectedRoute bounces you to /login without one */}
             <Route element={<ProtectedRoute />}>
