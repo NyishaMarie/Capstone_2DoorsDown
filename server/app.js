@@ -7,6 +7,7 @@ export default app;
 import cors from "cors";
 import apiRouter from "#api/index.js";
 import { getUserFromToken } from "#middleware/auth.js";
+import { handlePostgresErrors } from "#middleware/errors.js";
 
 // order matters. CORS first or the browser rejects the response
 
@@ -22,11 +23,13 @@ app.use(getUserFromToken);
 
 app.use("/api", apiRouter);
 
-// TODO - Nyisha N-05: Postgres error handler goes here, before the catch-all.
+// Nyisha N-05: Postgres error handler goes here, before the catch-all.
+
+app.use(handlePostgresErrors);
 
 // anything that reaches here is a real bug on our side
 
 app.use((err, req, res, next) => {
     console.error(err);
-    res.status(500).send("Sorry! Something went wrong.");
+    res.status(500).json({ error: "Sorry! Something went wrong." });
 });

@@ -18,7 +18,7 @@ router.post("/register", async (req, res) => {
     }
 
     if (password.length < 8) {
-        return res.status(400).send("Password must be at least 8 characters.");
+        return res.status(400).json({ error: "Password must be at least 8 characters." });
     }
 
     const user = await createUser({
@@ -37,12 +37,12 @@ router.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-        return res.status(400).send("Email and password are required.");
+        return res.status(400).json({ error: "Email and password are required." });
     }
 
     const user = await getUserByEmailAndPassword(email, password);
     if (!user) {
-        return res.status(401).send("Invalid email or password.");
+        return res.status(401).json({ error: "Invalid email or password." });
     }
 
     res.send({ token: createToken({ id: user.id }), user });
