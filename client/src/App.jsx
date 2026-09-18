@@ -1,4 +1,3 @@
-// this file is the entry point for the React application. It sets up the main App component and renders it to the DOM. Routes and providers.
 
 import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './auth/AuthContext.jsx';
