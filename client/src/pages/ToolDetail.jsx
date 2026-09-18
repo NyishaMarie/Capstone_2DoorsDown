@@ -1,8 +1,54 @@
-// client/src/pages/ToolDetail.jsx
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import apiRequest from '../api/Services/Api';
+import { useAuth } from '../auth/AuthContext';
 
-export default function ToolDetail({ tool, currentUserId }) {
-  const isOwner = tool.ownerId === currentUserId;
+export default function ToolDetail() {
+  // :id comes from the route path "tools/:id" in App.jsx.
+  // useParams() reads whatever's actually in the URL right now —
+  // visiting /tools/7 makes id === "7" here.
+  const { id } = useParams();
+
+  // user is null if nobody's logged in — that's fine, this page is public.
+  const { token, user } = useAuth();
+
+  const [tool, setTool] = useState(null);
+  const [status, setStatus] = useState('loading');
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setStatus('loading');
+
+    // Call apiRequest, then either setTool+ready
+    // or setError+error. token is passed along even though this route
+    // doesn't require login, since apiRequest just skips the Authorization
+    // header entirely when token is null/undefined.
+    apiRequest(`/tools/${id}`, token)
+      .then(data => {
+        setTool(data);
+        setStatus('ready');
+      })
+      .catch(err => {
+        setError(err.message);
+        setStatus('error');
+      });
+
+    // Re-fetch if the URL's :id changes (clicking from one tool straight
+    // to another) or if login state changes.
+  }, [id, token]);
+
+  if (status === 'loading') {
+    return <p>Loading tool…</p>;
+  }
+
+  if (status === 'error') {
+    return <p>Something went wrong: {error}</p>;
+  }
+
+  // isOwner has to wait until we actually have both `tool` and `user` —
+  // user is null when nobody's logged in, and tool is only set once
+  // status is 'ready', so this line only runs once both exist.
+  const isOwner = tool.ownerId === user?.id;
 
   return (
     <div className="tool-detail">
@@ -37,4 +83,4 @@ export default function ToolDetail({ tool, currentUserId }) {
       )}
     </div>
   );
-}cd
+}
