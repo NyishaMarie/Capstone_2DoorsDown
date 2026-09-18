@@ -7,7 +7,7 @@ import toolsRouter from "#api/tools.js";
 
 
 
-// TODO - Nyisha N-12: import borrowsRouter from "#api/borrows.js";
+import borrowsRouter from "#api/borrows.js";
 
 // TODO - Priscilla P-14: import usersRouter from "#api/users.js";
 
@@ -25,7 +25,6 @@ router.use("/tools", toolsRouter);
 
 // borrows mounts at the root so it can own /tools/:id/borrows
 
-
-// TODO - Nyisha N-12: router.use("/", borrowsRouter);
+router.use("/", borrowsRouter);
 
 // TODO - Priscilla P-14: router.use("/users", usersRouter);
