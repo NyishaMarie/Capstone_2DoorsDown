@@ -53,7 +53,7 @@ export default function ToolDetail() {
 
     try {
       await apiRequest(`/tools/${id}`, token, { method: 'DELETE' });
-      navigate('/tools/mine');
+      navigate('/my-toolshed');
     } catch (err) {
       setDeleteError(err.message);
       setDeleting(false);

@@ -9,6 +9,7 @@ import MyBorrows from './pages/MyBorrows.jsx';
 import ToolDetail from './pages/ToolDetail.jsx';
 import NewTool from './pages/NewTool.jsx';
 import EditTool from './pages/EditTool.jsx';
+import MyToolshed from './pages/MyToolshed.jsx';
 
 // Stands in for pages that aren't written yet.
 function Soon({ name, owner, ticket }) {
@@ -33,7 +34,7 @@ export default function App() {
             <Route element={<ProtectedRoute />}>
               <Route path="tools/new" element={<NewTool />} />
               <Route path="tools/:id/edit" element={<EditTool />} />
-              <Route path="my-toolshed" element={<Soon name="My Toolshed" owner="Priscilla" ticket="P-12" />} />
+              <Route path="my-toolshed" element={<MyToolshed />} />
               <Route path="my-borrows" element={<MyBorrows />} />
               <Route path="account" element={<Soon name="Account" owner="Nyisha" ticket="N-19" />} />
             </Route>
