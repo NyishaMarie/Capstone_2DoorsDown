@@ -1,4 +1,3 @@
-
 import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './auth/AuthContext.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
@@ -6,6 +5,7 @@ import Layout from './layout/Layout.jsx';
 import Browse from './pages/Browse.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
+import MyBorrows from './pages/MyBorrows.jsx';
 
 // Stands in for pages that aren't written yet.
 function Soon({ name, owner, ticket }) {
@@ -31,7 +31,7 @@ export default function App() {
               <Route path="tools/new" element={<Soon name="New tool" owner="Priscilla" ticket="P-10" />} />
               <Route path="tools/:id/edit" element={<Soon name="Edit tool" owner="Priscilla" ticket="P-11" />} />
               <Route path="my-toolshed" element={<Soon name="My Toolshed" owner="Priscilla" ticket="P-12" />} />
-              <Route path="my-borrows" element={<Soon name="My Borrows" owner="Nyisha" ticket="N-17" />} />
+              <Route path="my-borrows" element={<MyBorrows />} />
               <Route path="account" element={<Soon name="Account" owner="Nyisha" ticket="N-19" />} />
             </Route>
 
