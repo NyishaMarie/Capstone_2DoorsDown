@@ -18,26 +18,24 @@ export default function Browse() {
 
     // Build the search string from whatever filters are selected,
     // e.g. category=power &available=true
-    //It buiilds the URL extra filter links. If user selects no filters, then it skips params. 
     const params = new URLSearchParams();
     if (category) params.set('category', category);
     if (availableOnly) params.set('available', 'true');
-
+    
     // Call the backend for tools matching the current filters.
     // apiRequest needs the token passed directly.
-    request(`/tools?${params.toString()}`)
-      .then(data => {
-        setTools(data);
-        setStatus('ready');
-      })
-      .catch(err => {
-         // apiRequest throws an Error if the request failed — .message is that error text.
-        setError(err.message);
-        setStatus('error');
-      });
-      // Re-run this whenever the filters change, or when token changes (e.g. login/logout).
-    // This refetches when category, availableOnly, or token actually change.
-  }, [category, availableOnly, tagVersions.tools]);
+    apiRequest(`/tools?${params.toString()}`, token)  
+  .then(data => {
+    setTools(data);
+    setStatus('ready');
+  })
+    // apiRequest throws an Error if the request failed — .message is that error text.
+  .catch(err => {
+    setError(err.message);
+    setStatus('error');
+  });
+    // Re-run this whenever the filters change, or when token changes (e.g. login/logout).
+}, [category, availableOnly, token]);   
 
   //Always show the filter controls. 
   // Then, depending on what state the fetch is in (loading, error, or ready), 
