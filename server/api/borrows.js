@@ -6,7 +6,7 @@ export default router;
 
 import { requireUser } from "#middleware/auth.js";
 import { getToolById } from "#db/queries/tools.js";
-import { createBorrow, getActiveBorrowByToolId } from "#db/queries/borrows.js";
+import { createBorrow, getActiveBorrowByToolId, getBorrowById, returnBorrow, getBorrowsByBorrowerId, getBorrowsByOwnerId} from "#db/queries/borrows.js";
 
 // POST /tools/:id/borrows — borrow a tool
 // three guards, and the order they run in 
@@ -50,4 +50,48 @@ router.post("/tools/:id/borrows", requireUser, async (req, res) => {
     });
 
     res.status(201).send(borrow);
+});
+
+// GET /borrows/mine — everything I've borrowed from other people
+
+router.get("/borrows/mine", requireUser, async (req, res) => {
+    const borrows = await getBorrowsByBorrowerId(req.user.id);
+    res.send({ borrows });
+});
+
+// GET /borrows/lent — borrows on tools I own
+// this is the one Priscilla's My Toolshed page needs
+
+router.get("/borrows/lent", requireUser, async (req, res) => {
+    const borrows = await getBorrowsByOwnerId(req.user.id);
+    res.send({ borrows });
+});
+
+// PATCH /borrows/:id/return — mark a borrow returned
+
+router.patch("/borrows/:id/return", requireUser, async (req, res) => {
+    const borrow = await getBorrowById(req.params.id);
+
+    if (!borrow) {
+        return res.status(404).json({ error: "That borrow does not exist." });
+    }
+
+    // two people are allowed here, not one
+    // the borrower or the owner can do this
+    // either one can mark it returned 
+    const isBorrower = borrow.borrowerId === req.user.id;
+    const isOwner = borrow.ownerId === req.user.id;
+
+    if (!isBorrower && !isOwner) {
+        return res.status(403).json({
+            error: "Only the borrower or the tool's owner can mark this returned.",
+        });
+    }
+
+    if (borrow.returnedAt) {
+        return res.status(409).json({ error: "That borrow was already returned." });
+    }
+
+    const updated = await returnBorrow(req.params.id);
+    res.send(updated);
 });
