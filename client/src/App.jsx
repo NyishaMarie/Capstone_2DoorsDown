@@ -10,6 +10,7 @@ import ToolDetail from './pages/ToolDetail.jsx';
 import NewTool from './pages/NewTool.jsx';
 import EditTool from './pages/EditTool.jsx';
 import MyToolshed from './pages/MyToolshed.jsx';
+import UserProfile from './pages/Profile.jsx';
 
 // Stands in for pages that aren't written yet.
 function Soon({ name, owner, ticket }) {
@@ -26,7 +27,7 @@ export default function App() {
             <Route index element={<Soon name="Landing" owner="Priscilla" ticket="P-16" />} />
             <Route path="browse" element={<Browse />} />
             <Route path="tools/:id" element={<ToolDetail />} />
-            <Route path="users/:id" element={<Soon name="Profile" owner="Priscilla" ticket="P-15" />} />
+            <Route path="users/:id" element={<UserProfile />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
 
