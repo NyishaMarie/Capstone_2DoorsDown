@@ -11,6 +11,7 @@ import NewTool from './pages/NewTool.jsx';
 import EditTool from './pages/EditTool.jsx';
 import MyToolshed from './pages/MyToolshed.jsx';
 import UserProfile from './pages/Profile.jsx';
+import Landing from './pages/Landing.jsx';
 
 // Stands in for pages that aren't written yet.
 function Soon({ name, owner, ticket }) {
@@ -24,7 +25,7 @@ export default function App() {
           <Route element={<Layout />}>
 
             {/* public, anyone can see these */}
-            <Route index element={<Soon name="Landing" owner="Priscilla" ticket="P-16" />} />
+            <Route index element={<Landing />} />
             <Route path="browse" element={<Browse />} />
             <Route path="tools/:id" element={<ToolDetail />} />
             <Route path="users/:id" element={<UserProfile />} />

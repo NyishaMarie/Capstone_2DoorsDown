@@ -5,7 +5,11 @@ export default function ToolCard({ tool }) {
 
   return (
     <div className={`tool-card ${isAvailable ? '' : 'tool-card--dimmed'}`}>
-      <img src={photoUrl} alt={name} className="tool-card__photo" />
+      {photoUrl ? (
+        <img src={photoUrl} alt={name} className="tool-card__photo" />
+      ) : (
+        <div className="tool-card__photo tool-card__photo--empty" aria-hidden="true" />
+      )}
       <h3>{name}</h3>
       <span className="tag">{category}</span>
       <p>Owner: {ownerName}</p>
