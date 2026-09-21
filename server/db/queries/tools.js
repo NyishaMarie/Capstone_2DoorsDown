@@ -129,6 +129,7 @@ async function updateTool(id, { name, description, category, condition, photo_ur
        description = COALESCE($2, description),
        category    = COALESCE($3, category),
        condition   = COALESCE($4, condition),
+       photo_url   = COALESCE($5, photo_url)
      WHERE id = $6
      RETURNING
        id,
@@ -137,6 +138,7 @@ async function updateTool(id, { name, description, category, condition, photo_ur
        description,
        category,
        condition,
+       photo_url AS "photoUrl",
        created_at AS "createdAt"`,
     [name, description, category, condition, photo_url, id]
   );

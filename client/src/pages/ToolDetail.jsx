@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import apiRequest from '../api/Services/Api';
 import { useAuth } from '../auth/AuthContext';
 
 export default function ToolDetail() {
   // :id comes from the route path "tools/:id" in App.jsx.
   // useParams() reads whatever's actually in the URL right now —
-  // visiting /tools/7 makes id === "7" here.
   const { id } = useParams();
-
-  // user is null if nobody's logged in — that's fine, this page is public.
   const { token, user } = useAuth();
-
+  const navigate = useNavigate();
   const [tool, setTool] = useState(null);
   const [status, setStatus] = useState('loading');
   const [error, setError] = useState(null);
+
+  // Tracks the delete request specifically, separate from the page's
+  // own loading/error state above.
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState(null);
 
   useEffect(() => {
     setStatus('loading');
@@ -34,8 +36,29 @@ export default function ToolDetail() {
       });
 
     // Re-fetch if the URL's :id changes (clicking from one tool straight
-    // to another) or if login state changes.
-  }, [id, token]);
+    // to another) or if login
+    }, [id, token]);
+
+  // Runs when the owner clicks Delete. Confirms first (so a misclick
+  // doesn't destroy the tool), then calls the backend. The backend
+  // returns 409 with "That tool is currently borrowed." if hasActiveBorrow()
+  // is true — apiRequest turns that into an Error whose .message is that text.
+  const handleDelete = async () => {
+    if (!window.confirm(`Delete "${tool.name}"? This can't be undone.`)) {
+      return;
+    }
+
+    setDeleting(true);
+    setDeleteError(null);
+
+    try {
+      await apiRequest(`/tools/${id}`, token, { method: 'DELETE' });
+      navigate('/my-toolshed');
+    } catch (err) {
+      setDeleteError(err.message);
+      setDeleting(false);
+    }
+  };
 
   if (status === 'loading') {
     return <p>Loading tool…</p>;
@@ -65,14 +88,20 @@ export default function ToolDetail() {
       {isOwner && (
         <div className="tool-detail__branch tool-detail__branch--owner">
           <p>This is your tool.</p>
-          {/* edit/delete actions land here in P-11 */}
+          <Link to={`/tools/${tool.id}/edit`}>Edit</Link>
+          <button onClick={handleDelete} disabled={deleting}>
+            {deleting ? 'Deleting…' : 'Delete'}
+          </button>
+          {deleteError && (
+            <p className="tool-detail__delete-error">{deleteError}</p>
+          )}
         </div>
       )}
 
       {!isOwner && tool.isAvailable && (
         <div className="tool-detail__branch tool-detail__branch--available">
           <p>Available to borrow.</p>
-          {/* borrow action lands here, N-16 */}
+          {}
         </div>
       )}
 
