@@ -22,11 +22,11 @@ what is nearby, and you borrow it.
 
 ## Screenshots
 
-TO DO
+TO DO — Priscilla
 
-    Priscilla to handle screenshot section. Create a folder called docs, create another folder inside docs called screenshots, and put screenshots of the browse, tool detail, register and my borrows page. 
-
-    Mac screenshots: command+shift+4
+- Create a "docs" folder with a "screenshots" folder inside it
+- Add screenshots of Browse, Tool Detail, Register, and My Borrows
+- Mac: command+shift+4
 
 ## Goals
 
