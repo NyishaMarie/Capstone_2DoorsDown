@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import apiRequest from '../api/Services/Api';
 import { useAuth } from '../auth/AuthContext';
+import BorrowForm from '../components/BorrowForm.jsx';
 
 export default function ToolDetail() {
   // :id comes from the route path "tools/:id" in App.jsx.
@@ -101,7 +102,7 @@ export default function ToolDetail() {
       {!isOwner && tool.isAvailable && (
         <div className="tool-detail__branch tool-detail__branch--available">
           <p>Available to borrow.</p>
-          {}
+            <BorrowForm toolId={id} />
         </div>
       )}
 
