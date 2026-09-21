@@ -4,6 +4,17 @@ export default router;
 
 import { getUserById } from "#db/queries/users.js";
 import { getToolsByOwnerId } from "#db/queries/tools.js";
+import { getUserById, updateUserBio } from "#db/queries/users.js";
+import { requireUser } from "#middleware/auth.js";
+
+// PATCH /users/me — change your own bio
+// "me" instead of an id, so there's no way to edit somebody else
+
+router.patch("/me", requireUser, async (req, res) => {
+  const { bio } = req.body;
+  const user = await updateUserBio(req.user.id, bio);
+  res.send(user);
+});
 
 // GET /users/:id — public profile. No login required to view a neighbor's
 // profile, same as tool detail pages are public.

@@ -58,3 +58,17 @@ export async function getUserById(id) {
     if (user) delete user.password;
     return user;
 }
+
+// only the bio can change. name, email and neighborhood stay what you signed up with
+export async function updateUserBio(id, bio) {
+    const sql = `
+    UPDATE users
+    SET bio = $2
+    WHERE id = $1
+    RETURNING *
+    `;
+
+    const { rows: [user] } = await db.query(sql, [id, bio]);
+    delete user.password;
+    return user;
+}
