@@ -85,7 +85,7 @@ export function AuthProvider({ children }) {
 
   // everything we're handing out to the rest of the app
 
-  const value = { token, user, register, login, logout };
+  const value = { token, user, setUser, register, login, logout };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
