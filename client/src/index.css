@@ -407,3 +407,12 @@ header nav span {
   color: var(--text);
   font-size: 15px;
 }
+
+/* the landing headings use dark ink, which disappears on a dark background */
+
+@media (prefers-color-scheme: dark) {
+  .landing-step h2,
+  .landing-featured__heading {
+    color: var(--landing-bg);
+  }
+}
