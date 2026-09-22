@@ -22,11 +22,25 @@ what is nearby, and you borrow it.
 
 ## Screenshots
 
-TO DO — Priscilla
+**Landing**
 
-- Create a "docs" folder with a "screenshots" folder inside it
-- Add screenshots of Browse, Tool Detail, Register, and My Borrows
-- Mac: command+shift+4
+![Landing page](client/public/screenshots/landing.png)
+
+**Browse the catalog**
+
+![Browse page](client/public/screenshots/browse.png)
+
+**My Toolshed — tools you own and who has them**
+
+![My Toolshed page](client/public/screenshots/my-toolshed.png)
+
+**My Borrows — what you have out, with Return buttons**
+
+![My Borrows page](client/public/screenshots/my-borrows.png)
+
+**Account**
+
+![Account page](client/public/screenshots/account.png)
 
 ## Goals
 
