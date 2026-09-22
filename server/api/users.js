@@ -2,7 +2,6 @@ import express from "express";
 const router = express.Router();
 export default router;
 
-import { getUserById } from "#db/queries/users.js";
 import { getToolsByOwnerId } from "#db/queries/tools.js";
 import { getUserById, updateUserBio } from "#db/queries/users.js";
 import { requireUser } from "#middleware/auth.js";
