@@ -90,14 +90,8 @@ async function getToolsByOwnerId(ownerId) {
   return rows;
 }
 
-
 async function createTool({ owner_id, name, description, category, condition, photo_url }) {
-  const {
-    // db.query always returns { rows: [...] }. INSERT ... RETURNING only
-    // ever gives back one row (the one we just created), so we destructure
-    // straight down to that single row and call it `tool`.
-    rows: [tool],
-  } = await db.query(
+  const result = await db.query(
     `INSERT INTO tools
        (owner_id, name, description, category, condition, photo_url)
      VALUES ($1, $2, $3, $4, $5, $6)
@@ -112,13 +106,15 @@ async function createTool({ owner_id, name, description, category, condition, ph
     [owner_id, name, description, category, condition, photo_url || null]
   );
 
+  // INSERT ... RETURNING on a single row insert always gives back
+  // exactly one row, so we grab the first (and only) one.
+  const tool = result.rows[0];
+
   return tool;
 }
 
-// COALESCE($1, name) reads as "use $1, unless $1 is NULL, in which case
-// keep whatever `name` already is in the row." The pg driver turns a JS
-// `undefined` into SQL NULL when it's sent as a parameter. 
-
+// COALESCE($1, name) is common function in sql to use the new value if one was given, 
+// otherwise keep what's already there.
 async function updateTool(id, { name, description, category, condition, photo_url }) {
   const {
     rows: [tool],
