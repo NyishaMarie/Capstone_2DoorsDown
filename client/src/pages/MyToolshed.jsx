@@ -68,15 +68,21 @@ export default function MyToolshed() {
 
       <h2>Your tools</h2>
       {tools.length === 0 ? (
-        <p>You haven't listed any tools yet.</p>
+        <p>
+          You haven't listed any tools yet.{" "}
+          <Link to="/tools/new">Add your first one</Link>.
+        </p>
       ) : (
-        <div className="tool-grid">
-          {tools.map((tool) => (
-            <Link key={tool.id} to={`/tools/${tool.id}`}>
-              <ToolCard tool={tool} />
-            </Link>
-          ))}
-        </div>
+        <>
+          <Link to="/tools/new">+ Add a tool</Link>
+          <div className="tool-grid">
+            {tools.map((tool) => (
+              <Link key={tool.id} to={`/tools/${tool.id}`}>
+                <ToolCard tool={tool} />
+              </Link>
+            ))}
+          </div>
+        </>
       )}
 
       <h2>Currently lent out</h2>

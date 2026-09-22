@@ -1,7 +1,9 @@
+// one row for one borrow. used on My Borrows and on My Toolshed
+
 export default function BorrowRow({ borrow, side, children }) {
 
     // on My Borrows I want to see who owns it
-    // on My Toolshed Priscilla wants to see who took it
+    // on My Toolshed, Priscila wants to see who took it
     // same data either way, we just show the other person
     const otherPerson = side === "lent" ? borrow.borrowerName : borrow.ownerName;
     const label = side === "lent" ? "Borrowed by" : "From";
