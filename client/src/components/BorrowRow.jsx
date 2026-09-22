@@ -1,5 +1,3 @@
-// one row for one borrow. used on My Borrows and on Priscilla's My Toolshed
-
 export default function BorrowRow({ borrow, side, children }) {
 
     // on My Borrows I want to see who owns it
@@ -9,7 +7,7 @@ export default function BorrowRow({ borrow, side, children }) {
     const label = side === "lent" ? "Borrowed by" : "From";
 
     // three states. returned wins, then overdue, otherwise it's just out
-    
+
     let status = "Out";
     if (borrow.returnedAt) status = "Returned";
     else if (borrow.isOverdue) status = "Overdue";

@@ -1,4 +1,4 @@
-// the due date picker and Borrow button. lives on Priscilla's tool detail page
+// the due date picker and Borrow button
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";

@@ -1,4 +1,3 @@
-
 export default function CategoryFilter(props) {
   // Pulling props out
   const category = props.category;

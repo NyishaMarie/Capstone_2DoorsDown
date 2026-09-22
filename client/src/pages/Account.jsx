@@ -1,4 +1,3 @@
-// client/src/pages/Account.jsx
 // your own details, your bio, and the log out button
 
 import { useState } from "react";
