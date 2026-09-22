@@ -2,15 +2,8 @@ import 'dotenv/config';
 import { readFile } from 'node:fs/promises';
 import db from '#db/client.js';
 import {createUser} from '#db/queries/users.js';
-
-// TO DO - createTool comes with P-08 (Priscilla) 
 import {createTool} from '#db/queries/tools.js';
-
-// TO DO - createBorrow with N-11 (Nyisha)
 import {createBorrow} from '#db/queries/borrows.js';
-
-// until both of those exist, our npm run db:seed won't run properly
-
 
 const PASSWORD = 'password';
 

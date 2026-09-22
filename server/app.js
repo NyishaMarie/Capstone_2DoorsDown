@@ -1,4 +1,4 @@
-//this file server/app.js is for the Express application. It builds the API, export default app. It sets up the main app, middleware, and routes.
+//this file is for the Express application. It builds the API, export default app. It sets up the main app, middleware, and routes.
 
 import express from "express";
 const app = express();
@@ -23,7 +23,7 @@ app.use(getUserFromToken);
 
 app.use("/api", apiRouter);
 
-// Nyisha N-05: Postgres error handler goes here, before the catch-all.
+// Postgres error handler goes here, before the catch-all.
 
 app.use(handlePostgresErrors);
 

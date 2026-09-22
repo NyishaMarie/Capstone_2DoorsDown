@@ -1,4 +1,3 @@
-
 import db from '../client.js';
 
 // isAvailable and dueAt aren't columns on the tools table, instead they are in the borrows table. 
