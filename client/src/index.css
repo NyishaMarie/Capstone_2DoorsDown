@@ -408,6 +408,11 @@ header nav span {
   font-size: 15px;
 }
 
+.tool-card__link {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* the landing headings use dark ink, which disappears on a dark background */
 
 @media (prefers-color-scheme: dark) {
