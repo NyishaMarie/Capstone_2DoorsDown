@@ -60,7 +60,7 @@ router.get("/borrows/mine", requireUser, async (req, res) => {
 });
 
 // GET /borrows/lent — borrows on tools I own
-// this is the one Priscilla's My Toolshed page needs
+// this is the one that My Toolshed page needs
 
 router.get("/borrows/lent", requireUser, async (req, res) => {
     const borrows = await getBorrowsByOwnerId(req.user.id);

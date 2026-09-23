@@ -4,7 +4,7 @@ A neighborhood tool-lending app. Neighbors list tools they own, browse what's
 available nearby, and borrow from each other instead of buying something they
 will use twice.
 
-Fullstack Academy capstone, cohort 2605 — built by Nyisha and Priscilla.
+Fullstack Academy capstone, cohort 2605 — built by Nyisha and Priscila.
 
 **Live API:** https://toolshed-api-iyy3.onrender.com/api/health
 
