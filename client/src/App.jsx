@@ -13,6 +13,7 @@ import MyToolshed from './pages/MyToolshed.jsx';
 import UserProfile from './pages/Profile.jsx';
 import Landing from './pages/Landing.jsx';
 import Account from './pages/Account.jsx';
+import NotFound from './pages/NotFound.jsx';
 
 // Stands in for pages that aren't written yet.
 function Soon({ name, owner, ticket }) {
