@@ -43,7 +43,7 @@ export default function App() {
             </Route>
 
             {/* catch-all, has to stay last */}
-            <Route path="*" element={<Soon name="Not found" owner="either" ticket="T-10" />} />
+            <Route path="*" element={<NotFound />} />
             
           </Route>
         </Routes>
