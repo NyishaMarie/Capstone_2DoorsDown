@@ -341,6 +341,9 @@ form textarea {
   border-radius: 4px;
   color: var(--text-h);
   background: var(--bg);
+}
+
+form textarea {
   min-height: 100px;
   resize: vertical;
 }
