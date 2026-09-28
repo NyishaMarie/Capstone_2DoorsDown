@@ -15,11 +15,6 @@ import Landing from './pages/Landing.jsx';
 import Account from './pages/Account.jsx';
 import NotFound from './pages/NotFound.jsx';
 
-// Stands in for pages that aren't written yet.
-function Soon({ name, owner, ticket }) {
-  return <p>{name} — {owner}, {ticket}</p>;
-}
-
 export default function App() {
   return (
     <AuthProvider>
