@@ -65,9 +65,7 @@ export default function Landing() {
           </h2>
           <div className="tool-grid">
             {tools.map(tool => (
-              <Link key={tool.id} to={`/tools/${tool.id}`}>
-                <ToolCard tool={tool} />
-              </Link>
+              <ToolCard key={tool.id} tool={tool} />
             ))}
           </div>
         </section>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import apiRequest from '../api/Services/Api';
 import { useAuth } from '../auth/AuthContext';
 import ToolCard from '../components/ToolCard';
@@ -53,9 +53,7 @@ export default function UserProfile() {
       ) : (
         <div className="tool-grid">
           {profile.tools.map(tool => (
-            <Link key={tool.id} to={`/tools/${tool.id}`}>
-              <ToolCard tool={tool} />
-            </Link>
+            <ToolCard key={tool.id} tool={tool} />
           ))}
         </div>
       )}
