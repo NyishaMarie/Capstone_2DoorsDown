@@ -66,6 +66,15 @@ body {
   box-sizing: border-box;
 }
 
+main {
+  padding: 0 24px 48px;
+  text-align: left;
+}
+
+main h2 {
+  margin-top: 32px;
+}
+
 h1,
 h2 {
   font-family: var(--heading);
@@ -95,23 +104,15 @@ p {
   margin: 0;
 }
 
-code,
-.counter {
+code {
   font-family: var(--mono);
   display: inline-flex;
   border-radius: 4px;
   color: var(--text-h);
-}
-
-code {
   font-size: 15px;
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
-}
-
-.tool-card--dimmed {
-  opacity: 0.5;
 }
 
 /* --- Landing page --- */
@@ -299,6 +300,10 @@ code {
   color: var(--text);
 }
 
+.tool-card--dimmed {
+  opacity: 0.5;
+}
+
 .tag {
   display: inline-block;
   font-size: 13px;
@@ -336,9 +341,6 @@ form textarea {
   border-radius: 4px;
   color: var(--text-h);
   background: var(--bg);
-}
-
-form textarea {
   min-height: 100px;
   resize: vertical;
 }
@@ -408,16 +410,58 @@ header nav span {
   font-size: 15px;
 }
 
-.tool-card__link {
-  text-decoration: none;
-  color: inherit;
-}
-
 /* the landing headings use dark ink, which disappears on a dark background */
 
 @media (prefers-color-scheme: dark) {
   .landing-step h2,
   .landing-featured__heading {
     color: var(--landing-bg);
+  }
+}
+
+/* the borrow lists on My Borrows and My Toolshed, laid out like the tool grid */
+.borrow-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  text-align: left;
+}
+
+.borrow-row {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.borrow-row h3 {
+  margin: 0 0 8px;
+}
+
+.borrow-row p {
+  margin: 0 0 6px;
+}
+
+.borrow-row__status {
+  margin-bottom: 12px;
+}
+
+.borrow-row button {
+  display: block;
+  margin-top: 8px;
+}
+
+/* overdue is the one a person needs to spot without reading */
+.borrow-row__status--overdue {
+  color: #a3341f;
+  border-color: #a3341f;
+}
+
+@media (prefers-color-scheme: dark) {
+  .borrow-row__status--overdue {
+    color: #f0907a;
+    border-color: #f0907a;
   }
 }

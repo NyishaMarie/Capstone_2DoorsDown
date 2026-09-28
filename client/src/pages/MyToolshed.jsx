@@ -77,9 +77,7 @@ export default function MyToolshed() {
           <Link to="/tools/new">+ Add a tool</Link>
           <div className="tool-grid">
             {tools.map((tool) => (
-              <Link key={tool.id} to={`/tools/${tool.id}`}>
-                <ToolCard tool={tool} />
-              </Link>
+              <ToolCard key={tool.id} tool={tool} />
             ))}
           </div>
         </>
@@ -89,7 +87,7 @@ export default function MyToolshed() {
       {active.length === 0 ? (
         <p>Nothing out right now.</p>
       ) : (
-        <ul>
+        <ul className="borrow-list">
           {active.map((borrow) => (
             <BorrowRow key={borrow.id} borrow={borrow} side="lent">
               <button onClick={() => handleReturn(borrow.id)}>
@@ -104,7 +102,7 @@ export default function MyToolshed() {
       {past.length === 0 ? (
         <p>Nothing here yet.</p>
       ) : (
-        <ul>
+        <ul className="borrow-list">
           {past.map((borrow) => (
             <BorrowRow key={borrow.id} borrow={borrow} side="lent" />
           ))}

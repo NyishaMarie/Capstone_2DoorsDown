@@ -12,7 +12,7 @@ export default function MyBorrows() {
     const [status, setStatus] = useState("loading");
     const [error, setError] = useState(null);
 
-  // this has a name so the Return button can call it again afterwards
+    // this has a name so the Return button can call it again afterwards
     async function syncBorrows() {
         try {
             const data = await apiRequest("/borrows/mine", token);
@@ -56,7 +56,7 @@ export default function MyBorrows() {
             {active.length === 0 ? (
                 <p>You don't have anything borrowed right now.</p>
             ) : (
-                <ul>
+                <ul className="borrow-list">
                     {active.map(borrow => (
                         <BorrowRow key={borrow.id} borrow={borrow} side="mine">
                             <button onClick={() => handleReturn(borrow.id)}>Return</button>
@@ -69,7 +69,7 @@ export default function MyBorrows() {
             {past.length === 0 ? (
                 <p>Nothing here yet.</p>
             ) : (
-                <ul>
+                <ul className="borrow-list">
                     {past.map(borrow => (
                         <BorrowRow key={borrow.id} borrow={borrow} side="mine" />
                     ))}
