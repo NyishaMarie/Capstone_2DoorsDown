@@ -10,6 +10,7 @@ const TOOL_COLUMNS = `
   tools.description,
   tools.category,
   tools.condition,
+  tools.photo_url AS "photoUrl",
   tools.owner_id AS "ownerId",
   users.full_name AS "ownerName",
   users.neighborhood AS "ownerNeighborhood",
@@ -101,6 +102,7 @@ async function createTool({ owner_id, name, description, category, condition, ph
        description,
        category,
        condition,
+       photo_url AS "photoUrl",
        created_at AS "createdAt"`,
     [owner_id, name, description, category, condition, photo_url || null]
   );

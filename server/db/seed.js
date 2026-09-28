@@ -21,28 +21,27 @@ const users = [
 ];
 
 const tools = [
-  { owner: 0, name: 'Circular Saw',        category: 'power',      condition: 'good',      description: '7-1/4 inch corded. Blade is sharp, be careful.' },
-  { owner: 0, name: 'Orbital Sander',      category: 'power',      condition: 'like_new',   description: 'Barely used. Comes with a pack of 120 grit.' },
-  { owner: 1, name: 'Socket Set',          category: 'hand',       condition: 'good',      description: '40-piece metric and standard, in the case.' },
-  { owner: 1, name: 'Torque Wrench',       category: 'automotive', condition: 'good',      description: 'Click-type, 1/2 inch drive. Calibrated last year.' },
-  { owner: 2, name: 'Garden Tiller',       category: 'garden',     condition: 'fair',      description: 'Starts on the third pull. Loud but it works.' },
-  { owner: 2, name: 'Hedge Trimmer',       category: 'garden',     condition: 'good',      description: 'Electric, 40 foot cord included.' },
-  { owner: 3, name: 'Floor Jack',          category: 'automotive', condition: 'well_loved', description: '2 ton. Holds fine, the wheels squeak.' },
-  { owner: 3, name: 'Impact Driver',       category: 'power',      condition: 'good',      description: 'Cordless with two batteries and a charger.' },
-  { owner: 4, name: 'Tile Saw',            category: 'power',      condition: 'like_new',   description: 'Wet saw. Used it for one bathroom.' },
-  { owner: 4, name: 'Pipe Wrench',         category: 'hand',       condition: 'well_loved', description: '18 inch. Older than I am, still bites.' },
-  { owner: 5, name: 'Extension Ladder',    category: 'ladder',     condition: 'good',      description: '24 foot aluminum. Heavy, bring a friend.' },
-  { owner: 5, name: 'Step Ladder',         category: 'ladder',     condition: 'like_new',   description: '6 foot fiberglass.' },
-  { owner: 6, name: 'Pressure Washer',     category: 'outdoor',    condition: 'good',      description: 'Electric, 1800 PSI. Two nozzle tips.' },
-  { owner: 6, name: 'Leaf Blower',         category: 'outdoor',    condition: 'fair',      description: 'Gas. Needs choke held for the first minute.' },
-  { owner: 7, name: 'Stud Finder',         category: 'other',      condition: 'good',      description: 'Takes a 9V, not included.' },
-  { owner: 7, name: 'Drill Press',         category: 'power',      condition: 'good',      description: 'Benchtop. Pickup only, it is not light.' },
-  { owner: 8, name: 'Camping Stove',       category: 'outdoor',    condition: 'good',      description: 'Two burner propane. Tank not included.' },
-  { owner: 8, name: 'Chainsaw',            category: 'outdoor',    condition: 'fair',      description: '16 inch bar. Chain was sharpened in spring.' },
-  { owner: 9, name: 'Framing Hammer',      category: 'hand',       condition: 'well_loved', description: '22 oz milled face. My favorite tool.' },
-  { owner: 9, name: 'Level Set',           category: 'hand',       condition: 'good',      description: 'Two foot and four foot, plus a torpedo.' },
+  { owner: 0, name: 'Circular Saw',        category: 'power',      condition: 'good',      description: '7-1/4 inch corded. Blade is sharp, be careful.',        photo_url: 'https://i.imgur.com/vwGbUbi.jpeg' },
+  { owner: 0, name: 'Orbital Sander',      category: 'power',      condition: 'like_new',   description: 'Barely used. Comes with a pack of 120 grit.',            photo_url: 'https://i.imgur.com/HMJNEd3.jpeg' },
+  { owner: 1, name: 'Socket Set',          category: 'hand',       condition: 'good',      description: '40-piece metric and standard, in the case.',             photo_url: 'https://i.imgur.com/ZKRKs8k.png' },
+  { owner: 1, name: 'Torque Wrench',       category: 'automotive', condition: 'good',      description: 'Click-type, 1/2 inch drive. Calibrated last year.',       photo_url: 'https://i.imgur.com/LA1wbqt.png' },
+  { owner: 2, name: 'Garden Tiller',       category: 'garden',     condition: 'fair',      description: 'Starts on the third pull. Loud but it works.',            photo_url: 'https://i.imgur.com/i0vdcuD.jpeg' },
+  { owner: 2, name: 'Hedge Trimmer',       category: 'garden',     condition: 'good',      description: 'Electric, 40 foot cord included.',                        photo_url: 'https://i.imgur.com/kBnPHbd.jpeg' },
+  { owner: 3, name: 'Floor Jack',          category: 'automotive', condition: 'well_loved', description: '2 ton. Holds fine, the wheels squeak.',                  photo_url: 'https://i.imgur.com/bMMhWw1.jpeg' },
+  { owner: 3, name: 'Impact Driver',       category: 'power',      condition: 'good',      description: 'Cordless with two batteries and a charger.',              photo_url: 'https://i.imgur.com/ueEVodq.jpeg' },
+  { owner: 4, name: 'Tile Saw',            category: 'power',      condition: 'like_new',   description: 'Wet saw. Used it for one bathroom.',                     photo_url: 'https://i.imgur.com/ZfMI3pd.jpeg' },
+  { owner: 4, name: 'Pipe Wrench',         category: 'hand',       condition: 'well_loved', description: '18 inch. Older than I am, still bites.',                 photo_url: 'https://i.imgur.com/vtLxgtI.jpeg' },
+  { owner: 5, name: 'Extension Ladder',    category: 'ladder',     condition: 'good',      description: '24 foot aluminum. Heavy, bring a friend.',                photo_url: 'https://i.imgur.com/BSXkIiS.jpeg' },
+  { owner: 5, name: 'Step Ladder',         category: 'ladder',     condition: 'like_new',   description: '6 foot fiberglass.',                                     photo_url: 'https://i.imgur.com/taUCvfI.png' },
+  { owner: 6, name: 'Pressure Washer',     category: 'outdoor',    condition: 'good',      description: 'Electric, 1800 PSI. Two nozzle tips.',                    photo_url: 'https://i.imgur.com/7wHzcHg.jpeg' },
+  { owner: 6, name: 'Leaf Blower',         category: 'outdoor',    condition: 'fair',      description: 'Gas. Needs choke held for the first minute.',             photo_url: 'https://i.imgur.com/Q0hc9jY.jpeg' },
+  { owner: 7, name: 'Stud Finder',         category: 'other',      condition: 'good',      description: 'Takes a 9V, not included.',                              photo_url: 'https://i.imgur.com/9GsQfCm.png' },
+  { owner: 7, name: 'Drill Press',         category: 'power',      condition: 'good',      description: 'Benchtop. Pickup only, it is not light.',                 photo_url: 'https://i.imgur.com/bmyQRiO.jpeg' },
+  { owner: 8, name: 'Camping Stove',       category: 'outdoor',    condition: 'good',      description: 'Two burner propane. Tank not included.',                  photo_url: 'https://i.imgur.com/hoUJNaU.jpeg' },
+  { owner: 8, name: 'Chainsaw',            category: 'outdoor',    condition: 'fair',      description: '16 inch bar. Chain was sharpened in spring.',             photo_url: 'https://i.imgur.com/cl4mF6G.jpeg' },
+  { owner: 9, name: 'Framing Hammer',      category: 'hand',       condition: 'well_loved', description: '22 oz milled face. My favorite tool.',                   photo_url: 'https://i.imgur.com/dtA9u4v.png' },
+  { owner: 9, name: 'Level Set',           category: 'hand',       condition: 'good',      description: 'Two foot and four foot, plus a torpedo.',                 photo_url: 'https://i.imgur.com/ndubGde.jpeg' },
 ];
-
 //needed to look this up in order to get the date math correct.
 
 const DAY = 24 * 60 * 60 * 1000;
@@ -106,13 +105,13 @@ async function seed() {
     for (const user of users) {
         createdUsers.push(await createUser({...user, password:PASSWORD}));
     }
-
     const createdTools = [];
     for (const tool of tools) {
         createdTools.push(
             await createTool({...tool, owner_id: createdUsers[tool.owner].id})
-    );
-}
+        );
+    }
+
 
 const borrows = buildBorrows();
     for (let i=0; i<borrows.length; i++) {
